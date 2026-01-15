@@ -15,16 +15,13 @@ dotenv.config()
 export const app = express();
 const port = process.env.PORT || 2006;
 const dataBase = process.env.MONGODB_URL
-const client = process.env.CLIENT_URL
-const admin = process.env.ADMIN_URL
-const corsconfig = {
-  origin: [admin, client],
+
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://neura-mirror.vercel.app'],
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
+}));
 
 app.use(express.json({limit:'12mb'}));
-app.use(cors(corsconfig));
 app.use(cookieParser());
 
 

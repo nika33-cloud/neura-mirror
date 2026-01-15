@@ -19,9 +19,9 @@ const port = process.env.PORT || 2006;
 const dataBase = process.env.MONGODB_URL
 app.use(express.json({limit:'12mb'}));
 app.use(cors({
-   origin: ['http://localhost:5173', 'http://localhost:5174', 'https://guardednest.vercel.app'],
-   credentials: true,
- }));
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://neura-mirror.vercel.app'],
+  credentials: true,
+}));
 app.use(cookieParser());
 
 
