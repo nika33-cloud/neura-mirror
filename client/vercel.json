@@ -2,7 +2,7 @@
   "rewrites": [
      {
     "source": "/api/:path*",
-    "destination": "https://api.guardednestfinancial.com/:path*"
+    "destination": "https://api.neuramirrow.vercel.app/:path*"
   },
   { "source": "/(.*)",
    "destination": "/index.html" 
