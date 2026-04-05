@@ -1,22 +1,27 @@
 import mongoose from "mongoose";
-import app from "../app.js";
-import dotenv from "dotenv"
-
-dotenv.config()
-
-const dataBase = process.env.MONGODB_URL
+import app from "../../app.js"; // adjust path if needed
+import { createServer } from "http";
 
 let isConnected = false;
 
 async function connectDB() {
   if (isConnected) return;
-  await mongoose.connect(dataBase);
+  await mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   isConnected = true;
+  console.log("DB connected");
 }
 
 export default async function handler(req, res) {
   await connectDB();
-  return app(req, res);
+
+  return new Promise((resolve, reject) => {
+    const server = createServer(app);
+    server.emit("request", req, res);
+    resolve();
+  });
 }
 
 
