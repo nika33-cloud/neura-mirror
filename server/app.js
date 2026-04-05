@@ -32,6 +32,10 @@ app.use("/user", fundRoutes);
 app.use("/transaction", transactRoutes);
 app.use("/withdraw", withdrawRoutes);
 
+app.get("/test", (req, res) => {
+  res.json({ status: "working" });
+});
+
 app.get("/", (req, res) => {
   res.send("API Working");
 });

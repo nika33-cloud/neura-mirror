@@ -21,8 +21,9 @@ async function connectDB() {
 export default async function handler(req, res) {
   await connectDB();
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     app(req, res);
-    resolve();
+    res.on("finish", resolve);
+    res.on("error", reject);
   });
 }
