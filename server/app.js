@@ -11,8 +11,6 @@ import withdrawRoutes from "./routes/withdraw.routes.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
-const dataBase = process.env.MONGODB_URL;
 const client = process.env.CLIENT_URL;
 const admin = process.env.ADMIN_URL;
 
@@ -33,13 +31,6 @@ app.use("/auth", authRoutes);
 app.use("/user", fundRoutes);
 app.use("/transaction", transactRoutes);
 app.use("/withdraw", withdrawRoutes);
-
-mongoose
-  .connect(dataBase)
-  .then(() => {
-    console.log("MongoDB connected");
-  })
-  .catch((err) => console.error("MongoDB connection error:", err));
 
 app.get("/", (req, res) => {
   res.send("API Working");
