@@ -2,7 +2,7 @@
   "rewrites": [
      {
     "source": "/api/:path*",
-    "destination": "https://api-neura-lilac.vercel.app/:path*"
+    "destination": "https://api-neura-one.vercel.app/:path*"
   },
   { "source": "/(.*)",
    "destination": "/index.html" 
