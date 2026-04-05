@@ -1,6 +1,3 @@
-import { MdStars } from "react-icons/md";
-import { TbTrendingUp2 } from "react-icons/tb";
-import { FaUserLarge } from "react-icons/fa6";
 import bg from "../assets/jamie-street-VP4WmibxvcY-unsplash-removebg-preview.png";
 import { Link } from "react-router-dom";
 import {motion} from "motion/react"
@@ -8,56 +5,6 @@ import {motion} from "motion/react"
 const Features = () => {
   return (
     <div>
-      <motion.div
-
-       initial={{ scale: 0 }}
-       whileInView={{ scale: 1 }}
-       transition={{ duration: 0.7, ease: "easeIn" }}
-       viewport={{ once: true, amount: 0.3 }}
-      className="md:flex my-10 flex-wrap gap-8 px-10">
-        <div className="flex grow basis-[200px] flex-col justify-center items-center text-center mb-5">
-          <div className="bg-[#d5b775] px-2 py-1 rounded-[6px] shadow-md mb-6 shadow-[#665339]">
-            <TbTrendingUp2 />
-          </div>
-          <h3 className="font-semibold text-xl">Automatic trade</h3>
-          <p className="text-lg">
-            Skip the market research and technical analysis let&apos;s trade on
-            your behalf
-          </p>
-        </div>
-
-        <div className="flex grow basis-[200px] flex-col justify-center items-center text-center mb-5">
-          <div className="bg-[#d5b775] w-8 h-8 flex items-center justify-center rounded-full shadow-md mb-6 shadow-[#665339]">
-            <TbTrendingUp2 size={18} />
-          </div>
-          <h3 className="font-semibold text-xl">Access Experienced traders</h3>
-          <p className="text-lg">
-            Expand and diversify your portfolio by leveraging traders&apos;
-            expertise.
-          </p>
-        </div>
-
-        <div className="flex grow basis-[200px] flex-col justify-center items-center text-center mb-5">
-          <div className="mb-5">
-            <FaUserLarge size={20} />
-          </div>
-          <h3 className="font-semibold text-xl">Global Community</h3>
-          <p className="text-lg">
-            Join the world winning trading company and socialize with traders
-            from all over the world
-          </p>
-        </div>
-
-        <div className="flex grow basis-[200px] flex-col justify-center items-center text-center mb-5">
-          <div className="mb-4">
-            <MdStars size={27} />
-          </div>
-          <h3 className="font-semibold text-xl">Earn as a Investor</h3>
-          <p className="text-lg">
-            Earn additional income from the comfort of your home.
-          </p>
-        </div>
-      </motion.div>
 
       <div className="md:w-[90%] w-[95%] max-w-[1200px] m-auto rounded-xl flex flex-col lg:flex-row mb-10 justify-between bg-[#0b111d]">
         <motion.div

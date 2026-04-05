@@ -191,21 +191,6 @@ function About() {
 
       </div>
 
-          <div className="sub1">
-            <h1>
-              Subscribe to <span>Our Newsletter</span>
-            </h1>
-            <p>
-              Hey! Are you tired of missing out on our updates?
-              <br />
-              Subscribe to our news now and stay in the loop!
-            </p>
-            <form>
-              <input type="email" placeholder="Email address" />
-              <br />
-              <button>Submit</button>
-            </form>
-          </div>
         </div>
       </div>
 
