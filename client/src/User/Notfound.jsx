@@ -6,7 +6,7 @@ import logo from '../assets/footer.png';
 const NotFound = () => {
   return (
         <div className='h-screen items-center justify-center flex'>
-  <div className=' w-full flex justify-center items-center flex-wrap  '>
+  <div className=' w-full flex flex-col justify-center items-center flex-wrap  '>
     <div className='flex-grow'>
         <img className='animate-spin translate-y-14 duration-500' src={image_404} alt="" />
     </div>
