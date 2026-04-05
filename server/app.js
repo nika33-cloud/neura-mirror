@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-
 import authRoutes from "./routes/user.routes.js";
 import fundRoutes from "./routes/fund.routes.js";
 import transactRoutes from "./routes/transaction.routes.js";
@@ -13,8 +12,6 @@ dotenv.config();
 const app = express();
 const client = process.env.CLIENT_URL;
 const admin = process.env.ADMIN_URL;
-
-
 
 const corsconfig = {
   origin: [admin, client],
@@ -40,4 +37,3 @@ app.get("/", (req, res) => {
   res.send("API Working");
 });
 
-export default app;
