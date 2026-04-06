@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/user.routes.js";
-import fundRoutes from "./routes/fund.routes.js";
-import transactRoutes from "./routes/transaction.routes.js";
-import withdrawRoutes from "./routes/withdraw.routes.js";
+import authRoutes from "../routes/user.routes.js";
+import fundRoutes from "../routes/fund.routes.js";
+import transactRoutes from "../routes/transaction.routes.js";
+import withdrawRoutes from "../routes/withdraw.routes.js";
 
 const app = express();
 const client = process.env.CLIENT_URL;

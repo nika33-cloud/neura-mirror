@@ -1,49 +1,43 @@
-import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import dotenv from "dotenv"
-import authRoutes from "./routes/user.routes.js"
-import fundRoutes from "./routes/fund.routes.js"
-import transactRoutes from "./routes/transaction.routes.js"
-import withdrawRoutes from "./routes/withdraw.routes.js"
+import app from "./api/app.js";
 
-dotenv.config()
+const MONGODB_URL = process.env.MONGODB_URL;
 
+if (!MONGODB_URL) {
+  throw new Error("MONGODB_URL is not defined");
+}
 
-//Middleware
-export const app = express();
-const port = process.env.PORT || 2006;
-const dataBase = process.env.MONGODB_URL
+let cached = global.mongoose || { conn: null, promise: null };
+global.mongoose = cached;
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://neura-mirror.vercel.app'],
-  credentials: true,
-}));
+async function connectDB() {
+  if (cached.conn) return cached.conn;
 
-app.use(express.json({limit:'12mb'}));
-app.use(cookieParser());
+  if (!cached.promise) {
+    mongoose.set("strictQuery", true);
 
+    cached.promise = mongoose.connect(MONGODB_URL, {
+      bufferCommands: false,
+    });
+  }
 
-app.use("/auth", authRoutes);
-app.use("/user", fundRoutes);
-app.use("/transaction", transactRoutes)
-app.use("/withdraw", withdrawRoutes);
+  cached.conn = await cached.promise;
+  console.log("MongoDB connected");
 
+  return cached.conn;
+}
 
-// db connect
-mongoose.connect(dataBase).then(() => {
-  console.log("DB Connected");
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  }); 
-})
+export default async function handler(req, res) {
+  try {
+    await connectDB();
 
-
-
-
-app.get('/',(req, res) => {
-  res.send('API Working')
-});
-
-
+    return new Promise((resolve, reject) => {
+      app(req, res);
+      res.on("finish", resolve);
+      res.on("error", reject);
+    });
+  } catch (error) {
+    console.error("ERROR:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+}
