@@ -1,7 +1,10 @@
 {
-  "devDependencies": {
-    "@vitejs/plugin-react": "^5.1.2",
-    "vite": "^7.3.0"
+  "name": "neura-api",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "echo \"No build needed\""
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
