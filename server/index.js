@@ -26,9 +26,11 @@ async function connectDB() {
 
   return cached.conn;
 }
-
 export default async function handler(req, res) {
   try {
+    console.log("Handler started");
+    console.log("ENV:", process.env.MONGODB_URL ? "OK" : "MISSING");
+
     await connectDB();
 
     return new Promise((resolve, reject) => {
@@ -37,7 +39,7 @@ export default async function handler(req, res) {
       res.on("error", reject);
     });
   } catch (error) {
-    console.error("ERROR:", error);
-    res.status(500).json({ error: "Server error" });
+    console.error("FULL ERROR:", error);
+    res.status(500).json({ error: error.message });
   }
 }
